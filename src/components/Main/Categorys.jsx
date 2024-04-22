@@ -13,7 +13,7 @@ const Categorys = () => {
         try {
             const getData = await axios.get("https://jellyfish-app-mpahs.ondigitalocean.app/api/categories?pageSize=5&page=1")
             const response = getData.data
-            console.log(response)
+            console.log("Categorias", response)
             setAvailablesCategorys(response)
             if(response) { 
                 setShow(true)
@@ -23,6 +23,8 @@ const Categorys = () => {
         }
     }
 
+   
+
     useEffect(() => { 
         getCategorys()
     }, [])
@@ -31,7 +33,7 @@ const Categorys = () => {
 
   return (
     <div  className='w-screen left-0 border border-red-800 flex flex-col items-center justify-center'>
-        <div className='border border-yellow-600 w-9/10'>
+        <div className='border border-yellow-600 w-4/5'>
             <div className='flex flex-col items-center justify-center'>
                 <div className='flex justify-between items-center border border-green-800 w-full'>
                     <div className='flex flex-col border border-blue-700 justify-start items-start w-auto'> 

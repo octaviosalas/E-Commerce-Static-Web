@@ -5,7 +5,7 @@ import arrowButton from "../../images/arrowButton.png"
 const ImageMainComponent = () => {
   return (
     <div>
-         <div className='w-screen  left-0 h-[624px] md:h-[597px]  bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${auris})`}}>
+         <div className='w-screen left-0 h-[624px] md:h-[597px]  bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${auris})`}}>
             <div className='flex flex-col justify-start items-start ml-12 md:ml-24'>
                 <div className='flex flex-col w-[224px] md:w-[828px] mt-24 '>
                     <div className='flex items-start justify-start text-start mt-64 md:mt-0'>

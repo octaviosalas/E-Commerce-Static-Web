@@ -65,7 +65,7 @@ const Login = () => {
               <p className='mt-3' syle={{color:"#6B7280"}}>Ingresa con tu email y contraseña</p>
           </div>
           
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
           <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
             <div className='flex flex-col justify-start items-start'>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900"> Correo Electronico</label>
@@ -84,7 +84,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="relative">
-                  <input id="password" name="password" type="password" autoComplete="current-password" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pr-10"
+                  <input id="password" name="password" type="password" autoComplete="current-password" required className="block w-96 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pr-10"
                     onChange={handlePasswordChange}
                     value={password}
                   />
@@ -92,17 +92,15 @@ const Login = () => {
                </div>
             </div>
 
-            <div className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-4 w-4">
-                    <path fill="#FFFFFF" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                </svg>
-              <button type="submit" style={{backgroundColor:"#0500FF"}}  className="flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" >
-               Ingresar
+            <div className="flex items-center w-full">
+              
+              <button type="submit" style={{backgroundColor:"#0500FF"}}  className="flex w-full items-center justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
+              👍 Ingresar 
               </button>
             </div>
           </form>
 
-          <div class="flex items-center justify-between mt-3">
+          <div class="flex flex-col lg:flex-row items-center justify-between mt-3">
              <p style={{color:"#0500FF"}} className='text-sm'>¿No tenes cuenta? Ingresa aca</p>
              <p  style={{color:"#0500FF"}} className='text-sm'>Olvide mi contraseña</p>
           </div>

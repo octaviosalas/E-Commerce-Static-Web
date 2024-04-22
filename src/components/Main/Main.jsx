@@ -2,6 +2,7 @@ import React from 'react'
 import MainNavBar from './MainNavBar'
 import ImageMainComponent from './ImageMainComponent'
 import Categorys from './Categorys'
+import Publicity from './Publicity'
 
 const Main = () => {
   return (
@@ -12,6 +13,9 @@ const Main = () => {
       </div>
         <div className="flex-grow mt-12">
           <Categorys/>
+        </div>
+        <div className="flex-grow mt-12">
+         <Publicity/>
         </div>
     </div>
   )
