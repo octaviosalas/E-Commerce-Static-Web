@@ -1,4 +1,5 @@
 const { nextui } = require("@nextui-org/react");
+import daisyui from 'daisyui';
 
 export default {
   content: [
@@ -24,5 +25,5 @@ export default {
       '3xl': '1700px',
     },
   },
-  plugins: [require('@tailwindcss/forms'), nextui()]
+  plugins: [require('@tailwindcss/forms'), nextui(), daisyui]
 };

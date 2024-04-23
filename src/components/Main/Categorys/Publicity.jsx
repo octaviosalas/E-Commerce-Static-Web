@@ -1,14 +1,13 @@
 import React from 'react'
-import lastImage from "../../images/lastImage.png"
-import arrowButton from "../../images/arrowButton.png"
+import lastImage from"../../../images/lastImage.png"
+import arrowButton from"../../../images/arrowButton.png"
 
 const Publicity = () => {
   return (
-    <div className='w-screen left-0 flex flex-col items-center justify-center border border-yellow-800'>
-        <div className='flex flex-col lg:flex-row items-center justify-center w-full md:w-4/5 h-full border border-blue-700'>
-            <div className='w-full lg:w-2/4 h-96 order-2 lg:order-1 border border-green-600  bg-black '>
-                <div className='flex flex-col justify-center items-center lg:justify-start lg:items-start ml-0 lg:ml-6 mt-4
-                 lg:mt-6 border border-red-600 w-full lg:w-/3/4'>
+    <div className='w-screen left-0 flex flex-col items-center justify-center'>
+        <div className='flex flex-col lg:flex-row items-center justify-center w-full md:w-4/5 h-full '>
+            <div className='w-full lg:w-2/4 h-96 order-2 lg:order-1   bg-black '>
+                <div className='flex flex-col justify-center items-center lg:justify-start lg:items-start ml-0 lg:ml-6 mt-4 lg:mt-6 w-full lg:w-/3/4'>
                     <div className='flex flex-col w-[320px] xl:w-3/4 mt-0'>
                         <div className='flex items-start justify-start text-start mt-6 md:mt-0 w-4/4 lg:w-3/4 '>
                           <p className='text-white font-bold font-raleway text-2xl md:text-2xl xl:text-4xl 2xl:text-6xl'>Ejemplo de titulo de tres lineas</p>
