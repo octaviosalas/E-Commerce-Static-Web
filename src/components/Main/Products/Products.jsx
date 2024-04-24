@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import filterIcon from "../../../images/filterIcon.png"
 import {Select, SelectItem} from "@nextui-org/react";
 import arrowBlue from "../../../images/arrowBlue.png"
 import CardProducts from './CardProducts';
+import axios from 'axios';
 
 const Products = () => {
 
@@ -81,8 +82,31 @@ const Products = () => {
           },
     ]
 
+    
+    const [availableProducts, setAvailablesProducts] = useState([])
+    const [show, setShow] = useState(false)
+
+    async function getProducts(pageSize, page) {
+        const url = `https://jellyfish-app-mpahs.ondigitalocean.app/api/products?pageSize=${pageSize}&page=${page}`;
+        const response = await axios.get(url);
+        return response.data.data;
+       }
+       
+       async function get12Products() {
+        const firstPageProducts = await getProducts(9, 1);
+        const secondPageProducts = await getProducts(3, 2);
+        const allProducts = [...firstPageProducts, ...secondPageProducts];
+        setAvailablesProducts(allProducts)
+        console.log(allProducts)
+        return allProducts;
+       }
+       
+      useEffect(() => { 
+        get12Products()
+      }, [])
 
       const selectItems = ["Mayor precio", "Menor Precio", "A-Z", "Z-a"]
+
 
   return (
      <div  className='w-screen left-0 border border-red-800 flex flex-col items-center justify-center'>
@@ -93,7 +117,7 @@ const Products = () => {
                     <div  className='w-2/4 items-start text-start'>
                         <h5 className='flex flex-col md:flex-row gap-0 md:gap-2  font-raleway text-3xl font-bold text-black'>Productos <span style={{color:"#0500FF"}}> destacados</span></h5>
                     </div>
-                    <div className='w-full flex flex-col justify-start items-start text-start'>
+                    <div className='w-full xl:w-3/4 flex flex-col justify-start items-start text-start'>
                         <p className='font-raleway' style={{color:"#6B7280"}}>¡Descubre nuestros productos estrella! Encuentra lo mejor en tecnología y accesorios para simplificar tu vida.</p>
                     </div>
                 </div>
@@ -112,7 +136,7 @@ const Products = () => {
             </div>
 
             <div className='mt-4 w-full flex'>
-               <CardProducts productsData={productsData}/> 
+               {availableProducts.length > 0 ? <CardProducts productsData={availableProducts}/> : null}
             </div>
 
         </div>

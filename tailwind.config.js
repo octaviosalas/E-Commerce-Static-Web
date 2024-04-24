@@ -1,5 +1,4 @@
 const { nextui } = require("@nextui-org/react");
-import daisyui from 'daisyui';
 
 export default {
   content: [
@@ -11,6 +10,7 @@ export default {
     extend: {
       fontFamily: {
         'raleway': ['Raleway', 'sans-serif'],
+        'barlow': ['Barlow', 'sans-serif'],
       },
     },
     screens: {
@@ -25,5 +25,5 @@ export default {
       '3xl': '1700px',
     },
   },
-  plugins: [require('@tailwindcss/forms'), nextui(), daisyui]
+  plugins: [require('@tailwindcss/forms'), nextui()]
 };
