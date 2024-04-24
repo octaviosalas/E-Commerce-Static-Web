@@ -111,7 +111,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer site="Login"/>
     </div>
   )
 }

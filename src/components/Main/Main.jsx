@@ -21,6 +21,7 @@ const Main = () => {
         <div className="flex-grow mt-12">
          <Publicity/>
         </div>
+        <Footer/>
      
     </div>
   )

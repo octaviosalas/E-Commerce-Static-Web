@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import arrowBlue from "../../../images/arrowBlue.png"
 import axios from 'axios'
 import CategorysCard from './CategorysCard'
+import Loading from '../../Common/Loading'
 
 
 const Categorys = () => {
@@ -61,9 +62,9 @@ const Categorys = () => {
                         <img src={arrowBlue} className='h-2 w-2'/>
                     </div>
                 </div>
-                <div className='flex flex-col justify-start items-start mt-2 xl:mt-4 w-full' ref={parentDivRef}>
+                <div className='flex flex-col justify-center items-center mt-2 xl:mt-4 w-full' ref={parentDivRef}>
                     <div className='flex items-center justify-center'>
-                      {show ? <CategorysCard categoryData={availableCategorys} parentWidth={parentWidth}/> : null}
+                      {show ? <CategorysCard categoryData={availableCategorys} parentWidth={parentWidth}/> : <Loading/>}
                     </div>
                 </div>
             </div>

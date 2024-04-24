@@ -34,7 +34,7 @@ const CardProducts = ({productsData, parentWidth}) => {
    
 
   return (
-    <div className='no-scrollbar flex w-full overflow-x-auto overflow-y-auto'
+    <div className='no-scrollbar flex w-full overflow-x-auto overflow-y-auto cursor-pointer'
          ref={carouselRef}  
          style={{ maxWidth: parentWidth }}
          onMouseDown={handleMouseDown}
@@ -60,7 +60,7 @@ const CardProducts = ({productsData, parentWidth}) => {
                      
                         <div className='flex items-start justify-start mt-auto ml-3'>
                             <div className='h-5 w-12 bg-gray-100 flex items-center justify-center'>
-                                <p className='text-xs  text-black font-barlow'>{formatePrice(prod.price)}</p>
+                                <p className='text-xs 2xl:text-sm text-black font-barlow'>{formatePrice(prod.price)}</p>
                             </div>
                         </div>
                 </div>
