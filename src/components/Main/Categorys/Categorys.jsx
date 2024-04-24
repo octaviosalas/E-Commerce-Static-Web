@@ -6,10 +6,12 @@ import CategorysCard from './CategorysCard'
 
 const Categorys = () => {
 
-    const  [availableCategorys, setAvailablesCategorys] = useState([])
+    const [availableCategorys, setAvailablesCategorys] = useState([])
     const [show, setShow] = useState(false)
     const [parentWidth, setParentWidth] = useState(0);
     const parentDivRef = useRef();
+
+
     const getCategorys = async () => { 
         try {
             const getData = await axios.get("https://jellyfish-app-mpahs.ondigitalocean.app/api/categories?pageSize=7&page=1")
@@ -24,13 +26,10 @@ const Categorys = () => {
         }
     }
 
-   
-
     useEffect(() => { 
         getCategorys()
     }, [])
 
-   
    
     useEffect(() => {
        const updateSize = () => {

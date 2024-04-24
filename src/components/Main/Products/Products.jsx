@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import filterIcon from "../../../images/filterIcon.png"
 import {Select, SelectItem} from "@nextui-org/react";
 import arrowBlue from "../../../images/arrowBlue.png"
@@ -85,6 +85,8 @@ const Products = () => {
     
     const [availableProducts, setAvailablesProducts] = useState([])
     const [show, setShow] = useState(false)
+    const [parentWidth, setParentWidth] = useState(0);
+    const parentDivRef = useRef();
 
     async function getProducts(pageSize, page) {
         const url = `https://jellyfish-app-mpahs.ondigitalocean.app/api/products?pageSize=${pageSize}&page=${page}`;
@@ -107,13 +109,24 @@ const Products = () => {
 
       const selectItems = ["Mayor precio", "Menor Precio", "A-Z", "Z-a"]
 
+      useEffect(() => {
+        const updateSize = () => {
+          setParentWidth(parentDivRef.current.offsetWidth);
+        };
+    
+        window.addEventListener('resize', updateSize);
+        updateSize(); 
+    
+        return () => window.removeEventListener('resize', updateSize); 
+     }, []);
+
 
   return (
-     <div  className='w-screen left-0 border border-red-800 flex flex-col items-center justify-center'>
-      <div className='border border-yellow-600 w-4/5'>
+     <div  className='w-screen left-0  flex flex-col items-center justify-center'>
+      <div className=' w-4/5'>
         <div className='flex flex-col items-center justify-center'>
-            <div className='flex justify-between items-center border border-green-800 w-full'>
-                <div className='flex flex-col border border-blue-700 justify-start items-start w-auto'> 
+            <div className='flex justify-between items-center  w-full'>
+                <div className='flex flex-col  justify-start items-start w-auto'> 
                     <div  className='w-2/4 items-start text-start'>
                         <h5 className='flex flex-col md:flex-row gap-0 md:gap-2  font-raleway text-3xl font-bold text-black'>Productos <span style={{color:"#0500FF"}}> destacados</span></h5>
                     </div>
@@ -135,8 +148,8 @@ const Products = () => {
                 </div>
             </div>
 
-            <div className='mt-4 w-full flex'>
-               {availableProducts.length > 0 ? <CardProducts productsData={availableProducts}/> : null}
+            <div className='mt-4 w-full flex' ref={parentDivRef}>
+               {availableProducts.length > 0 ? <CardProducts productsData={availableProducts}  parentWidth={parentWidth}/> : null}
             </div>
 
         </div>
