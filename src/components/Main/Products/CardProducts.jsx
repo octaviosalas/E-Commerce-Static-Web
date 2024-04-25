@@ -61,7 +61,7 @@ const CardProducts = ({productsData, parentWidth}) => {
                         </div>
                 </div>
                 <div className='flex flex-col justify-start items-start text-start mt-1 w-4/4 lg:w-2/4'>
-                    <p className='font-bold text-black text-xs ml-3 font-raleway'>{prod.name}</p>
+                    <p className='font-bold text-black text-xs ml-3 font-raleway'>{prod.name.length > 20 ? `${prod.name.substring(0, 20)}...` : prod.name}</p>
                     <p className='font-raleway  text-xs ml-3' style={{color:"#9CA3AF"}}>{prod.categories.map((p) => p.name)[0]}</p>
                 </div>
             </div> 
