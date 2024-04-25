@@ -40,7 +40,7 @@ const Categorys = () => {
        window.addEventListener('resize', updateSize);
        updateSize(); // Actualiza el tamaño inicial
    
-       return () => window.removeEventListener('resize', updateSize); // Limpia el evento al desmontar
+       return () => window.removeEventListener('resize', updateSize); 
     }, []);
 
   return (

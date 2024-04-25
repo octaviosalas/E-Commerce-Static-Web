@@ -5,6 +5,7 @@ import Categorys from './Categorys/Categorys'
 import Publicity from './Categorys/Publicity'
 import Products from './Products/Products'
 import Footer from "../Footer/Footer"
+
 const Main = () => {
   return (
     <div className="flex flex-col min-h-screen justify-center items-center text-center">
@@ -21,8 +22,9 @@ const Main = () => {
         <div className="flex-grow mt-12">
          <Publicity/>
         </div>
-        <Footer/>
-     
+        <div className='mt-4'>
+          <Footer/>
+        </div>
     </div>
   )
 }

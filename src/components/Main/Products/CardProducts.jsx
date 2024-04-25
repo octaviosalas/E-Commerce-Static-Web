@@ -3,9 +3,6 @@ import { formatePrice } from '../../../functions/gralFunctions'
 import like from "../../../images/like.png"
 
 const CardProducts = ({productsData, parentWidth}) => {
-   
-    console.log(productsData)
-    console.log(productsData.map((prod) => prod.galleryImages)[0].map((p) => p.url)[0])
 
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
@@ -22,16 +19,13 @@ const CardProducts = ({productsData, parentWidth}) => {
     const handleMouseMove = (e) => {
        if (!isDragging) return;
        const x = e.pageX - carouselRef.current.offsetLeft;
-       const walk = (x - startX) * 2; // Ajusta la velocidad de desplazamiento si es necesario
+       const walk = (x - startX) * 2; 
        carouselRef.current.scrollLeft = scrollLeft - walk;
     };
    
     const handleMouseUp = () => {
        setIsDragging(false);
     };
-  
-
-   
 
   return (
     <div className='no-scrollbar flex w-full overflow-x-auto overflow-y-auto cursor-pointer'
@@ -42,7 +36,7 @@ const CardProducts = ({productsData, parentWidth}) => {
          onMouseUp={handleMouseUp}
          onMouseLeave={handleMouseUp}
       >
-       <div className="flex gap-2 items-center md:grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 w-full md:gap-1 ">
+       <div className="flex gap-2 items-center md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full md:gap-1 ">
           {productsData.map((prod) => ( 
              <div className='flex flex-col items-start gap-1  rounded-lg h-60 lg:h-72 xl:h-80 '>
                        <div className='flex w-full justify-end items-end text-end'>
@@ -53,9 +47,11 @@ const CardProducts = ({productsData, parentWidth}) => {
                 <div className='flex flex-col h-40 w-40 lg:w-56 xl:w-64 2xl:w-80 rounded-lg ' 
                   style={{
                      backgroundImage: `url(${prod.galleryImages[0].url})`,
-                     backgroundSize: 'cover',
-                     backgroundPosition: '50% 50%', 
-                     backgroundRepeat: 'no-repeat', 
+                     backgroundSize: 'contain',
+                     backgroundPosition: 'center', 
+                     backgroundRepeat: 'no-repeat',
+                     width: '100%',
+                     height: '100%', 
                   }}> 
                      
                         <div className='flex items-start justify-start mt-auto ml-3'>

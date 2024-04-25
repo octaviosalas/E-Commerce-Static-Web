@@ -8,130 +8,54 @@ import {Select, SelectItem} from "@nextui-org/react";
 
 const Products = () => {
 
-    const productsData = [
-        {
-          productName: "Auricular",
-          category: "Musica",
-          price: 1500,
-          image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-        },
-        {
-            productName: "Auricular",
-            category: "Musica",
-            price: 1500,
-            image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-        },
-        {
-            productName: "Auricular",
-            category: "Musica",
-            price: 1500,
-            image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-        },
-        {
-            productName: "Auricular",
-            category: "Musica",
-            price: 1500,
-            image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-        },
-        {
-            productName: "Auricular",
-            category: "Musica",
-            price: 1500,
-            image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-          {
-              productName: "Auricular",
-              category: "Musica",
-              price: 1500,
-              image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-          {
-              productName: "Auricular",
-              category: "Musica",
-              price: 1500,
-              image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-          {
-              productName: "Auricular",
-              category: "Musica",
-              price: 1500,
-              image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-          {
-            productName: "Auricular",
-            category: "Musica",
-            price: 1500,
-            image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-          {
-              productName: "Auricular",
-              category: "Musica",
-              price: 1500,
-              image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-          {
-              productName: "Auricular",
-              category: "Musica",
-              price: 1500,
-              image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-          {
-              productName: "Auricular",
-              category: "Musica",
-              price: 1500,
-              image: "https://storage.googleapis.com/tecnowestune/2018/11/d868966c-product_detail_x2_desktop_hd_25_isofront_rgb_red.jpg"
-          },
-    ]
-
-    
     const [availableProducts, setAvailablesProducts] = useState([])
     const [show, setShow] = useState(false)
     const [parentWidth, setParentWidth] = useState(0);
     const parentDivRef = useRef();
 
+    const selectItems = ["Mayor precio", "Menor Precio", "A-Z", "Z-a"]
+
     async function getProducts(pageSize, page) {
         const url = `https://jellyfish-app-mpahs.ondigitalocean.app/api/products?pageSize=${pageSize}&page=${page}`;
         const response = await axios.get(url);
         return response.data.data;
-       }
+    }
        
-       async function get12Products() {
+    async function get12Products() {
         const firstPageProducts = await getProducts(9, 1);
         const secondPageProducts = await getProducts(3, 2);
         const allProducts = [...firstPageProducts, ...secondPageProducts];
         setAvailablesProducts(allProducts)
         console.log(allProducts)
         return allProducts;
-       }
+    }
        
-      useEffect(() => { 
+    useEffect(() => { 
         get12Products()
-      }, [])
+    }, [])
 
-      const selectItems = ["Mayor precio", "Menor Precio", "A-Z", "Z-a"]
+     
 
-      useEffect(() => {
-        const updateSize = () => {
-          setParentWidth(parentDivRef.current.offsetWidth);
-        };
-    
-        window.addEventListener('resize', updateSize);
-        updateSize(); 
-    
-        return () => window.removeEventListener('resize', updateSize); 
-      }, []);
+    useEffect(() => {
+      const updateSize = () => {
+       setParentWidth(parentDivRef.current.offsetWidth);
+      };
+       window.addEventListener('resize', updateSize);
+       updateSize(); 
+       return () => window.removeEventListener('resize', updateSize); 
+    }, []);
 
 
   return (
      <div  className='w-screen left-0  flex flex-col items-center justify-center'>
       <div className=' w-4/5'>
         <div className='flex flex-col items-center justify-center'>
-            <div className='flex justify-between items-center  w-full'>
-                <div className='flex flex-col  justify-start items-start w-auto'> 
+            <div className='flex justify-between items-center w-full'>
+                <div className='flex flex-col justify-start items-start w-auto'> 
                     <div  className='w-2/4 items-start text-start'>
                         <h5 className='flex flex-col md:flex-row gap-0 md:gap-2  font-raleway text-3xl font-bold text-black'>Productos <span style={{color:"#0500FF"}}> destacados</span></h5>
                     </div>
-                    <div className='w-full xl:w-3/4 flex flex-col justify-start items-start text-start'>
+                    <div className='w-full lg:w-3/4 flex flex-col justify-start items-start text-start'>
                         <p className='font-raleway' style={{color:"#6B7280"}}>¡Descubre nuestros productos estrella! Encuentra lo mejor en tecnología y accesorios para simplificar tu vida.</p>
                     </div>
                 </div>
@@ -141,7 +65,7 @@ const Products = () => {
                             variant="bordered"
                             radius='md'
                             placeholder="Ordenar Por"
-                            className="w-40 2xl:w-52 font-medium text-black  border border-black rounded-md"
+                            className="w-40 2xl:w-52 font-medium text-black  border border-black rounded-xl text-xs 2xl:text-md"
                             disallowEmptySelectio="true"
                             startContent={<img src={filterIcon} alt="Icono de filtro" className='ml-6 2xl:ml-8'/>}
                             selectorIcon={<></>} 

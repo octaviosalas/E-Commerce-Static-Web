@@ -6,11 +6,15 @@ import axios from "axios"
 import LoginNavbar from './LoginNavbar'
 import Footer from '../Footer/Footer'
 import { useNavigate } from 'react-router-dom'
+import user from "../../images/usericon.png"
+import passwordicon from "../../images/passwordicon.png"
+import Loading from "../Common/Loading"
 
 const Login = () => {
 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [showLoad, setShowLoad] = useState(false)
     const navigate = useNavigate()
 
     const schema = Yup.object().shape({ 
@@ -18,8 +22,8 @@ const Login = () => {
         password: Yup.string().min(6).required().matches(/[A-Z]/).matches(/[0-9]/)
     });
 
-    const submitForm = async (values, ) => {
-      console.log(values);
+    const submitForm = async (values) => {
+      setShowLoad(true)
       const userData = { 
          identifier: "pruebatecnica@creativedog.agency", //email
          password: "9I@5)22Jbc<{" // password
@@ -27,12 +31,14 @@ const Login = () => {
       try {
          const sendUserData = await axios.post('https://jellyfish-app-mpahs.ondigitalocean.app/api/auth/local', userData);
          const response = sendUserData.data;
-         console.log(response);
+          console.log(response);
           localStorage.setItem('jwt', response.jwt);
           localStorage.setItem('user', JSON.stringify(response.user));
           navigate("/Home")
+          setShowLoad(false)
       } catch (error) {
          console.error('An error occurred:', error.response ? error.response.data : error.message);
+         setShowLoad(false);
       }
      };
 
@@ -88,14 +94,17 @@ const Login = () => {
                     onChange={handlePasswordChange}
                     value={password}
                   />
-                  <img src={eye} alt="Eye icon" className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none mt-2" />
+                  <img src={passwordicon} alt="Eye icon" className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none mt-2" />
                </div>
             </div>
 
             <div className="flex items-center w-full">
-              
               <button type="submit" style={{backgroundColor:"#0500FF"}}  className="flex w-full items-center justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2" >
-              👍 Ingresar 
+                  <div className="flex items-center gap-2">
+                        <img src={user} className='w-4 h-5'/>
+                        <p> Ingresar </p>                    
+                  </div>
+                
               </button>
             </div>
           </form>
@@ -104,6 +113,11 @@ const Login = () => {
              <p style={{color:"#0500FF"}} className='text-sm'>¿No tenes cuenta? Ingresa aca</p>
              <p  style={{color:"#0500FF"}} className='text-sm'>Olvide mi contraseña</p>
           </div>
+
+          {showLoad ? 
+          <div className='mt-5 flex justify-center items-center'>
+            <Loading />
+          </div> : null}
 
           <div className='mt-2 flex flex-col items-center jsutify-center'>
             {errors.email ? <span className="text-red-600 font-medium text-sm">Email Invalido</span> : null}

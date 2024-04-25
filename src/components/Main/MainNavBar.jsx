@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import CommerceItem from '../Common/CommerceItem'
 import arrow from "../../images/arrowRigth.png"
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarMenuToggle, NavbarMenu} from "@nextui-org/react";
 
 const MainNavBar = () => {
 
@@ -10,7 +10,7 @@ const MainNavBar = () => {
     const itemsNavBar = ["Inicio", "Productos", "Nosotros", "Contacto"]
 
   return (
-    <div className="fixed z-50 top-0 left-0 right-0 inset-x-0 h-14  w-screen flex justify-between">
+    <div className="fixed z-50 top-0 left-0 right-0 inset-x-0 h-14 flex justify-between">
        <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth="full">
                 <NavbarContent>
                     <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden text-black" />
@@ -44,39 +44,3 @@ const MainNavBar = () => {
 }
 
 export default MainNavBar
-
-
-/* 
-
-
-import React from 'react'
-import CommerceItem from '../Common/CommerceItem'
-import arrow from "../../images/arrowRigth.png"
-
-const MainNavBar = () => {
-  return (
-   <div className="fixed z-50 top-0 left-0 right-0 inset-x-0 h-14 text-white w-full" >
-        <div className='flex items-center justify-between'>
-             <div>
-               <CommerceItem/>
-             </div>
-             <div className='flex items-center gap-4'>
-                <span className='text-black text-sm'>Inicio</span>
-                <span className='text-black text-sm'>Productos</span>
-                <span className='text-black text-sm'>Nosotros</span>
-                <span className='text-black text-sm'>Contacto</span>
-             </div>
-             <div className='mr-2'>
-                <img src={arrow} className='h-6 w-6'/>
-             </div>
-        </div>
-    </div>
-  )
-}
-
-export default MainNavBar
-
-
-
-
-*/
